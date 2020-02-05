@@ -39,7 +39,7 @@ class PriermasPublicaciones extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return array(
-            PrimerasCategorias::class,
+            PrimerasCategorias::class
         );
     }
 }
