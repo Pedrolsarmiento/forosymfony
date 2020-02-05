@@ -28,6 +28,7 @@ class PublicacionesVarias extends Fixture implements DependentFixtureInterface
 
             $p->setCategoria($c);
             $p->setContenido($contenido);
+            $p->setTitulo($contenidos[mt_rand(0,count($contenidos)-1)]);
             $p->setFechaPublicacion(new \DateTime("now"));
 
             $manager->persist($p);

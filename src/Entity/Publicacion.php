@@ -37,6 +37,11 @@ class Publicacion
      */
     private $categoria;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $titulo;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class Publicacion
     public function setCategoria(?Categoria $categoria): self
     {
         $this->categoria = $categoria;
+
+        return $this;
+    }
+
+    public function getTitulo(): ?string
+    {
+        return $this->titulo;
+    }
+
+    public function setTitulo(string $titulo): self
+    {
+        $this->titulo = $titulo;
 
         return $this;
     }

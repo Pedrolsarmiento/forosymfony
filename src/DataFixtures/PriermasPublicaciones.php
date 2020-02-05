@@ -18,6 +18,7 @@ class PriermasPublicaciones extends Fixture implements DependentFixtureInterface
         $c = $repository->findOneBy(['nombre'=>'Ajedrez']);
         $p =new Publicacion();
         $p->setCategoria($c);
+        $p->setTitulo('Divercion');
         $p->setContenido('Que divertido el ajedrez :D');
 
 
