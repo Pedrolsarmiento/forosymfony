@@ -23,4 +23,5 @@ class PrimerasCategorias extends Fixture
 
         $manager->flush();
     }
+
 }
