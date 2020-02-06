@@ -1,12 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+        <header>
+            <img src="" alt="logo">
+            <h1>Foro</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href=""><img src="" alt=""></a></li>
+                <li><a href=""><p></p></a></li>
+                <li><a href=""><img src="" alt=""></a></li>
+            </ul>
+        </nav>
+
         {% block body %}{% endblock %}
+
         {% block javascripts %}{% endblock %}
+
+        <footer>
+            <p>Copiright</p>
+            <a href=""><img src="" alt=""></a>
+        </footer>
     </body>
 </html>

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PublicacionController!{% endblock %}
+
+{% block body %}
+    <table>
+        <thead>
+        <th>Publicaciones</th>
+        <th>Descripción</th>
+        <th>Categoria</th>
+        <th>Respuestas</th>
+        <th>Fecha</th>
+        </thead>
+
+        <tbody>
+        {% for publicacion in listado_publicaciones %}
+            <tr>
+                <td>{{ publicacion.getTitulo() }}</td>
+                <td>{{ publicacion.getContenido() }}</td>
+                <td>{{ publicacion.getCategoria() }}</td>
+                <td>{{ publicacion.getComentarios().count() }}</td>
+                <td>{{ publicacion.getFechaPublicacion()|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h3><span> << </span><span> < </span> Página 3 <span> > </span><span> >> </span></h3>
+{% endblock %}

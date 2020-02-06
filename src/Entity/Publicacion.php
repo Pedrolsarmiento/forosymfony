@@ -34,7 +34,7 @@ class Publicacion
     private $imagen;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Categoria", inversedBy="publicacions")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Categoria", inversedBy="publicacions", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $categoria;
@@ -45,7 +45,7 @@ class Publicacion
     private $titulo;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Comentario", mappedBy="publicacion", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Comentario", mappedBy="publicacion", orphanRemoval=true, fetch="EAGER")
      */
     private $comentarios;
 
