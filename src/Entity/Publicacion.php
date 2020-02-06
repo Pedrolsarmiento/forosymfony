@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +43,16 @@ class Publicacion
      * @ORM\Column(type="string", length=255)
      */
     private $titulo;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comentario", mappedBy="publicacion", orphanRemoval=true)
+     */
+    private $comentarios;
+
+    public function __construct()
+    {
+        $this->comentarios = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -103,6 +115,37 @@ class Publicacion
     public function setTitulo(string $titulo): self
     {
         $this->titulo = $titulo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comentario[]
+     */
+    public function getComentarios(): Collection
+    {
+        return $this->comentarios;
+    }
+
+    public function addComentario(Comentario $comentario): self
+    {
+        if (!$this->comentarios->contains($comentario)) {
+            $this->comentarios[] = $comentario;
+            $comentario->setPublicacion($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComentario(Comentario $comentario): self
+    {
+        if ($this->comentarios->contains($comentario)) {
+            $this->comentarios->removeElement($comentario);
+            // set the owning side to null (unless already changed)
+            if ($comentario->getPublicacion() === $this) {
+                $comentario->setPublicacion(null);
+            }
+        }
 
         return $this;
     }
