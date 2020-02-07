@@ -5,6 +5,7 @@
 {% block body %}
     <table>
         <thead>
+        <th>ID</th>
         <th>Publicaciones</th>
         <th>Descripción</th>
         <th>Categoria</th>
@@ -15,7 +16,8 @@
         <tbody>
         {% for publicacion in listado_publicaciones %}
             <tr>
-                <td>{{ publicacion.getTitulo() }}</td>
+                <td><a href="{{ path('publicacion-detalle',{id: publicacion.getId}) }}">{{ publicacion.getId() }}</a></td>
+                <td><a href="{{ path('publicacion-detalle',{id: publicacion.getId}) }}">{{ publicacion.getTitulo() }}</a></td>
                 <td>{{ publicacion.getContenido() }}</td>
                 <td>{{ publicacion.getCategoria() }}</td>
                 <td>{{ publicacion.getComentarios().count() }}</td>

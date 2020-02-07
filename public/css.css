@@ -1,0 +1,36 @@
+html,body {margin:0;padding:0;box-sizing: border-box; font-family: fantasy,sans-serif;}
+
+h1 {
+    color: firebrick;
+    background-color: hsla(0, 79.2%, 43.3%, 0.3);
+    text-align: center;
+    margin: 0;
+    padding: 2em;
+}
+nav > ul {
+    display: flex;
+    list-style-type: none;
+    width: 50%;
+    background-color: black;
+    margin: auto;
+    text-align: center;
+    border-radius: 10px;
+}
+nav > ul > li {
+    flex: 20%;
+    padding: 0.5em;
+
+}
+nav > ul > li a{
+    text-decoration: none;
+    color: firebrick;
+    font-style: italic;
+    font-size: 1.2em;
+}
+main { width: 80%; margin: auto;}
+table {
+    margin: 2em 0;
+    width: 100%;
+    border-radius: 10px;
+    border: solid black 1px;
+}

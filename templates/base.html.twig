@@ -3,23 +3,25 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+        {% endblock %}
+        <link rel="stylesheet" href="{{ asset('css.css') }}" type="text/css">
+
     </head>
     <body>
         <header>
-            <img src="" alt="logo">
-            <h1>Foro</h1>
+            <h1>Foro Symfony</h1>
         </header>
         <nav>
             <ul>
-                <li><a href=""><img src="" alt=""></a></li>
-                <li><a href=""><p></p></a></li>
-                <li><a href=""><img src="" alt=""></a></li>
+                <li><a href="{{ path('ultimas_publicaciones') }}">Inicio</a></li>
+                <li><a href="">Login</a></li>
+                <li><a href="">Logout</a></li>
             </ul>
         </nav>
-
+        <main>
         {% block body %}{% endblock %}
-
+        </main>
         {% block javascripts %}{% endblock %}
 
         <footer>

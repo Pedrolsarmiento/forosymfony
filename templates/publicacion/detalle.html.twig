@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Publicacion Detalle{% endblock %}
+{% block stylesheets %}
+<style>
+    section {
+        border:solid firebrick 1px;
+        border-radius: 10px;
+        margin: 2em auto;
+        padding: 1em;
+    }
+    section > div + div {
+        background-color: hsla(0, 79.2%, 43.3%, 0.3);
+        padding: 1em;
+        margin: 0.5em auto;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+    <h2>DETALLE DE UNA PUBLICACION {{ publicacion.getId() }}</h2>
+
+
+    <section>
+        <h4>Autor: Anonimo</h4>
+        <span>Fehca: {{ publicacion.getFechaPublicacion()|date('Y-m-d H:i:s') }}</span>
+        <button >Eliminar Publicacion</button><!--(solo dueño de publicacion)-->
+        <button >Editar Publicacion</button><!--(solo dueño de publicacion)-->
+    </section>
+
+    <section>
+        <h2>Titulo: {{ publicacion.getTitulo() }}</h2>
+        <p>Contenido: {{ publicacion.getContenido() }}</p>
+    </section>
+
+
+    <section>
+        <h3>Comentarios</h3>
+        <div>
+            <button>Crear Comentario</button>
+        </div>
+
+        {%  for comentario in comentarios  %}
+        <div>
+            <h4>Id = {{ comentario.getId() }}</h4>
+            <span>Fecha = {{ comentario.getFechaPublicacion()|date('Y-m-d H:i:s') }}</span>
+            <p>{{comentario.getContenido()}}</p>
+        </div>
+        {% endfor %}
+
+        <h3><!--numero de pagina--></h3>
+    </section>
+{% endblock %}

@@ -14,6 +14,7 @@ class PublicacionController extends AbstractController
      */
     public function index(PublicacionRepository $repository)
     {
+
         //preguntar a los modelos
 
         //$repository = $this->getDoctrine()->getRepository(Publicacion::class);
@@ -24,4 +25,26 @@ class PublicacionController extends AbstractController
             'listado_publicaciones' => $publicaciones
         ]);
     }
+
+
+    /**
+     * @Route("/publicacion/{id}", name="publicacion-detalle")
+     */
+    public function detalle($id, Publicacion $publicacion)
+    {
+//          Esto se puede simplificar
+//        $pr = $this->getDoctrine()->getRepository(Publicacion::class);
+//        $publicacion = $pr->find($id);
+//
+//        if($publicacion == null) {
+//            throw $this->createNotFoundException('Publicacion no existe');
+//        }
+
+
+        return $this->render('publicacion/detalle.html.twig', [
+            'publicacion' => $publicacion,
+            'comentarios' => $publicacion->getComentarios()
+        ]);
+    }
+
 }
