@@ -1,3 +1,7 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+    path: /
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /ultimas
+        permanent: true
+    ##controller: App\Controller\PublicacionController::index

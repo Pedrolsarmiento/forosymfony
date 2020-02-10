@@ -5,7 +5,9 @@ h1 {
     background-color: hsla(0, 79.2%, 43.3%, 0.3);
     text-align: center;
     margin: 0;
-    padding: 2em;
+    padding: 1em;
+    font-family: "Lucida Console";
+    font-size: 3em;
 }
 nav > ul {
     display: flex;
