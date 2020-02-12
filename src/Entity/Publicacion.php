@@ -175,7 +175,8 @@ class Publicacion
 
     public function setUser(?User $User): self
     {
-        $this->User = $User;
+
+        $this->user = $User;
 
         return $this;
     }
