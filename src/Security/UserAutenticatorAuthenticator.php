@@ -92,10 +92,12 @@ class UserAutenticatorAuthenticator extends AbstractFormLoginAuthenticator imple
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
+
         }
 
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        return new RedirectResponse($this->urlGenerator->generate('ultimas_publicaciones'));
     }
 
     protected function getLoginUrl()
