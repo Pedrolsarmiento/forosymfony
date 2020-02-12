@@ -50,12 +50,6 @@ class Publicacion
     private $comentarios;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="publicacions")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $User;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="Publicacion")
      * @ORM\JoinColumn(nullable=false)
      */
