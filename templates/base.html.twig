@@ -11,6 +11,11 @@
     <body>
         <header>
             <h1>Foro Symfony</h1>
+            {% if is_granted("ROLE_USER") %}
+                Hola {{  app.user.username }} <a href="/logout">Logout</a>
+            {% else %}
+                <a href="/login">Login</a>
+            {% endif %}
         </header>
         <nav>
             <ul>

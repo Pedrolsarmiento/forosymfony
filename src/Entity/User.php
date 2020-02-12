@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -37,6 +39,22 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $nombrecompleto;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Publicacion", mappedBy="User", orphanRemoval=true)
+     */
+    private $publicacions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Publicacion", mappedBy="user", orphanRemoval=true)
+     */
+    private $Publicacion;
+
+    public function __construct()
+    {
+        $this->publicacions = new ArrayCollection();
+        $this->Publicacion = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -121,5 +139,44 @@ class User implements UserInterface
         $this->nombrecompleto = $nombrecompleto;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Publicacion[]
+     */
+    public function getPublicacions(): Collection
+    {
+        return $this->publicacions;
+    }
+
+    public function addPublicacion(Publicacion $publicacion): self
+    {
+        if (!$this->publicacions->contains($publicacion)) {
+            $this->publicacions[] = $publicacion;
+            $publicacion->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePublicacion(Publicacion $publicacion): self
+    {
+        if ($this->publicacions->contains($publicacion)) {
+            $this->publicacions->removeElement($publicacion);
+            // set the owning side to null (unless already changed)
+            if ($publicacion->getUser() === $this) {
+                $publicacion->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Publicacion[]
+     */
+    public function getPublicacion(): Collection
+    {
+        return $this->Publicacion;
     }
 }

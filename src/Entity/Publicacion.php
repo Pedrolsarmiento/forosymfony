@@ -49,6 +49,18 @@ class Publicacion
      */
     private $comentarios;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="publicacions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $User;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="Publicacion")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function __construct()
     {
         $this->comentarios = new ArrayCollection();
@@ -146,6 +158,30 @@ class Publicacion
                 $comentario->setPublicacion(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getRelation(): ?string
+    {
+        return $this->relation;
+    }
+
+    public function setRelation(string $relation): self
+    {
+        $this->relation = $relation;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->User;
+    }
+
+    public function setUser(?User $User): self
+    {
+        $this->User = $User;
 
         return $this;
     }
