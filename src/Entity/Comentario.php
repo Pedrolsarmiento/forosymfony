@@ -90,5 +90,9 @@ class Comentario
 
         return $this;
     }
-    
+
+    public function __toString()
+    {
+        return "Id: " . $this->getId();
+    }
 }

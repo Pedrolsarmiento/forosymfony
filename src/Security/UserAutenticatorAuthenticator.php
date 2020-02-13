@@ -102,6 +102,6 @@ class UserAutenticatorAuthenticator extends AbstractFormLoginAuthenticator imple
 
     protected function getLoginUrl()
     {
-        return $this->urlGenerator->generate('app_login');
+        return $this->urlGenerator->generate('ultimas_publicaciones');
     }
 }

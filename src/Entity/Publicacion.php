@@ -170,7 +170,7 @@ class Publicacion
 
     public function getUser(): ?User
     {
-        return $this->User;
+        return $this->user;
     }
 
     public function setUser(?User $User): self
@@ -179,5 +179,10 @@ class Publicacion
         $this->user = $User;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return "(". $this->getId() .") ". substr($this->getTitulo(),0,10) . "...";
     }
 }

@@ -40,10 +40,7 @@ class User implements UserInterface
      */
     private $nombrecompleto;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Publicacion", mappedBy="User", orphanRemoval=true)
-     */
-    private $publicacions;
+
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Publicacion", mappedBy="user", orphanRemoval=true)
@@ -150,15 +147,12 @@ class User implements UserInterface
     /**
      * @return Collection|Publicacion[]
      */
-    public function getPublicacions(): Collection
-    {
-        return $this->publicacions;
-    }
+
 
     public function addPublicacion(Publicacion $publicacion): self
     {
-        if (!$this->publicacions->contains($publicacion)) {
-            $this->publicacions[] = $publicacion;
+        if (!$this->publicacion->contains($publicacion)) {
+            $this->publicacion[] = $publicacion;
             $publicacion->setUser($this);
         }
 
@@ -167,8 +161,8 @@ class User implements UserInterface
 
     public function removePublicacion(Publicacion $publicacion): self
     {
-        if ($this->publicacions->contains($publicacion)) {
-            $this->publicacions->removeElement($publicacion);
+        if ($this->publicacion->contains($publicacion)) {
+            $this->publicacion->removeElement($publicacion);
             // set the owning side to null (unless already changed)
             if ($publicacion->getUser() === $this) {
                 $publicacion->setUser(null);
@@ -215,5 +209,10 @@ class User implements UserInterface
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getNombrecompleto();
     }
 }

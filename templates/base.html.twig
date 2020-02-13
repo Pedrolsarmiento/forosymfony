@@ -12,16 +12,17 @@
         <header>
             <h1>Foro Symfony</h1>
             {% if is_granted("ROLE_USER") %}
-                Hola {{  app.user.username }} <a href="/logout">Logout</a>
-            {% else %}
-                <a href="/login">Login</a>
+                Hola {{  app.user.username }}
             {% endif %}
         </header>
         <nav>
             <ul>
                 <li><a href="{{ path('ultimas_publicaciones') }}">Inicio</a></li>
-                <li><a href="">Login</a></li>
-                <li><a href="">Logout</a></li>
+                {% if is_granted("ROLE_USER") %}
+                <li><a href="/logout">Logout</a></li>
+                {% else %}
+                <li><a href="/login">Login</a></li>
+                {% endif %}
             </ul>
         </nav>
         <main>
