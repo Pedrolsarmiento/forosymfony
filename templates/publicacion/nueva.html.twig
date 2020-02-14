@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nueva Publicacion{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        form {
+            margin-top: 4em;
+        }
+        form > div {
+            display: flex;
+            flex-direction: column;
+        }
+        form > div > div {
+            margin: 1em 0;
+            display: flex;
+            align-items: center;
+        }
+        form > div > div > label {
+            flex: 0 0 15%;
+
+        }
+        form > div > div > input,form > div > div > textarea {
+            flex: 1 1 0;
+        }
+    </style>
+
+{% endblock %}
+
+{% block body %}
+    {{ form(form) }}
+{% endblock %}

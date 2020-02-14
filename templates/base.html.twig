@@ -19,10 +19,12 @@
             <ul>
                 <li><a href="{{ path('ultimas_publicaciones') }}">Inicio</a></li>
                 {% if is_granted("ROLE_USER") %}
-                <li><a href="/logout">Logout</a></li>
+                    <li><a href="{{ path('publicacion-nueva') }}">Nueva Publicación</a></li>
+                    <li><a href="/logout">Logout</a></li>
                 {% else %}
-                <li><a href="/login">Login</a></li>
+                    <li><a href="/login">Login</a></li>
                 {% endif %}
+
             </ul>
         </nav>
         <main>

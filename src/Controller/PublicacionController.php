@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Publicacion;
+use App\Entity\User;
+use App\Form\PublicacionType;
 use App\Repository\PublicacionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,7 +30,7 @@ class PublicacionController extends AbstractController
 
 
     /**
-     * @Route("/publicacion/{id}", name="publicacion-detalle")
+     * @Route("/publicacion/detalle/{id<\d+>}", name="publicacion-detalle")
      */
     public function detalle($id, Publicacion $publicacion)
     {
@@ -44,6 +46,24 @@ class PublicacionController extends AbstractController
         return $this->render('publicacion/detalle.html.twig', [
             'publicacion' => $publicacion,
             'comentarios' => $publicacion->getComentarios()
+        ]);
+    }
+
+    /**
+     * @Route("/publicacion/nueva", name="publicacion-nueva")
+     */
+    public function nueva()
+    {
+
+        $p = new Publicacion();
+
+        $form = $this->createForm(PublicacionType::class, $p);
+        $form->get('user')->setData($this->getUser()->getUsername());
+        $d = new \DateTime('now');
+        $form->get('fecha_publicacion')->setData($d->format("Y-m-d H:i:s"));
+
+        return $this->render('publicacion/nueva.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 

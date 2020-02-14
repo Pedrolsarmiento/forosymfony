@@ -36,3 +36,4 @@ security:
          - { path: ^/supersecreto, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
          - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/publicacion/nueva, roles: ROLE_USER }
